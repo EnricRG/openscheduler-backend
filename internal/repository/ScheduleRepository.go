@@ -1,6 +1,6 @@
 package repository
 
-import "github.com/EnricRG/resteduler-backend/domain"
+import "github.com/EnricRG/openscheduler-backend/internal/domain"
 
 type ScheduleRepository interface {
 	// FindById retrieves an schedule identified by its unique identifier.

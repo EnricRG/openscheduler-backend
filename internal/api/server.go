@@ -3,9 +3,9 @@ package api
 import (
 	"net/http"
 
-	"github.com/EnricRG/resteduler-backend/api/mapper"
-	"github.com/EnricRG/resteduler-backend/logging"
-	"github.com/EnricRG/resteduler-backend/service"
+	"github.com/EnricRG/openscheduler-backend/internal/api/mapper"
+	"github.com/EnricRG/openscheduler-backend/internal/logging"
+	"github.com/EnricRG/openscheduler-backend/internal/service"
 	"github.com/labstack/echo/v4"
 	log "github.com/rs/zerolog"
 )
@@ -39,7 +39,7 @@ func (s *server) getUserSchedules(ctx echo.Context) (err error) {
 		return ctx.String(http.StatusBadRequest, "Invalid user identifier")
 	}
 
-	userSchedules, err := s.services.Shcedules.GetUserSchedules(userId)
+	userSchedules, err := s.services.Shcedule.GetUserSchedules(userId)
 	if err != nil {
 		s.logger.Error().Err(err).Msgf("Unexpected error while retrieving schedules for user '%d'", userId)
 		return s.internalServerError(ctx)
