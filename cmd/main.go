@@ -5,8 +5,7 @@ import (
 )
 
 func main() {
-
-	//TODO init logging
+	//TODO init config
 	//TODO init program (di)
 	go WaitForTermination(Shutdown)
 	//TODO run program

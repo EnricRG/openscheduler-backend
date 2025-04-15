@@ -2,9 +2,11 @@ package api
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/EnricRG/openscheduler-backend/internal/api/mapper"
 	"github.com/EnricRG/openscheduler-backend/internal/logging"
+	zerologger "github.com/EnricRG/openscheduler-backend/internal/logging/zerolog"
 	"github.com/EnricRG/openscheduler-backend/internal/service"
 	"github.com/labstack/echo/v4"
 	log "github.com/rs/zerolog"
@@ -26,7 +28,7 @@ func NewServer(port uint16, services service.Services) *server {
 	return &server{
 		port,
 		services,
-		logging.GetLogger(),
+		zerologger.NewLogger(logging.InitParams{Level: logging.Trace, Writer: os.Stdout}).Delegate,
 	}
 }
 
