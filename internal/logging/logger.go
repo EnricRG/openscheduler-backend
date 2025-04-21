@@ -1,5 +1,12 @@
 package logging
 
+// Logger provides an implementation agnostic facade to emit logs. It must support parametric logging for LogEvent.
+type Logger interface {
+	Log(level Level, msg string)
+	Logf(level Level, msgF string, args ...any)
+	With(level Level) LogEvent
+}
+
 // LogEvent is the interface for implementation-agnostic domain level logging events. This interface encourages using structured
 // loggers like Zerolog, but it's not a requirement.
 //
@@ -15,7 +22,7 @@ package logging
 type LogEvent interface {
 	// Log is the final method of this event instance. If this method finishes successfully, a log request is expected to be
 	// emitted to the underlying logger.
-	Log(level Level)
+	Log()
 
 	/// Context modification methods.
 
