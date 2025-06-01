@@ -1,4 +1,4 @@
-package service
+package schedule
 
 import "github.com/EnricRG/openscheduler-backend/internal/domain"
 
